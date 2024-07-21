@@ -1,6 +1,9 @@
 # Chapter 1: First Steps
 
 ---
+![My Skills](https://go-skill-icons.vercel.app/api/icons?i=postgres,linux,docker,bash,&perine=6)
+
+---
 
 > [!NOTE]
 >
