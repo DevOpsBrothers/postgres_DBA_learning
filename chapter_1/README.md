@@ -16,3 +16,12 @@
 > 1. Avoiding Hardcoding Password
 > 1. Using Connection **Service File**
 > 1. Troubleshooting
+
+>[!TIP]
+> ### To Check current DB :
+>
+>```sql
+> select current_database();
+> -- output:
+> -- postgres
+>```
