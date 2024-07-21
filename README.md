@@ -25,3 +25,8 @@ In this repo: Postgres DBA commands and concepts learning will be kept
 > 
 > default password : postgres
 
+>[!TIP]
+>
+>To Play with POSTGRESQL use the [PostgreSQL Client Image](https://github.com/DevOpsBrothers/postgres_DBA_learning/tree/main/postgres_client_img)
+>README is the inside the folder , instructions are given in that -> how to use.
+> 
