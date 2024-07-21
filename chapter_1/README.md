@@ -32,7 +32,7 @@
 > PGUSER=postgres #(default)
 > ```
 
-> [!DANGER]
+> [!CAUTION]
 > Not Recommended
 > `PGPASSWORD=MyPassWord@123`
 
