@@ -31,10 +31,10 @@
 > PGDATABASE=postgres #(default)
 > PGUSER=postgres #(default)
 > ```
->
+
 > [!DANGER]
-> > Not Recommended
-> > `PGPASSWORD=MyPassWord@123`
+> Not Recommended
+> `PGPASSWORD=MyPassWord@123`
 
 > [!TIP]
 >
