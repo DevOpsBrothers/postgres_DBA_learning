@@ -233,3 +233,8 @@
 > 1. Access to the **OS command line**
 
 ---
+## Changing Password Securely
+
+>[!IMPORTANT]
+> Once Connected to psql with user creds, we can change password for that user in interactive way using `\password` command.
+> ![example_2.png not found](./img/example_2.png)
