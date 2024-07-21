@@ -118,4 +118,7 @@
 > [!IMPORTANT]
 > in **pg_hba.conf** add below line to allow access to **all database** to **all user**
 >
-> **host all all 0.0.0.0/0 md5`**
+> ```conf
+> # TYPE  DATABASE        USER            ADDRESS                 METHOD
+> host    all              all         0.0.0.0/0 md5
+> ```
