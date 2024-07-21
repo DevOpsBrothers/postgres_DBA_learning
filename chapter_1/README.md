@@ -88,7 +88,7 @@
 > --output:
 > PostgreSQL 16.3 on x86_64-pc-linux-musl, compiled by gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, 64-bit
 > ```
-
+---
 ## Enabling Access for Network / Remote User
 
 > [!IMPORTANT]
@@ -122,66 +122,95 @@
 > # TYPE  DATABASE        USER            ADDRESS                 METHOD
 > host    all              all         0.0.0.0/0 md5
 > ```
-
+---
 ## Use the `psql` query and scripting
 
->[!IMPORTANT]
+> [!IMPORTANT]
 >
 > To Create user and database through psql , first connect to db
-> 
->```sql
->CREATE USER pritam WITH PASSWORD 'admin123';
->CREATE DATABASE mytestdb;
->GRANT ALL PRIVILEGES ON DATABASE mytestdb TO pritam;
->```
 >
->![example_1.png Not Found](./img/example_1.png)
+> ```sql
+> CREATE USER pritam WITH PASSWORD 'admin123';
+> CREATE DATABASE mytestdb;
+> GRANT ALL PRIVILEGES ON DATABASE mytestdb TO pritam;
+> ```
+>
+> ![example_1.png Not Found](./img/example_1.png)
 
->[!NOTE]
+> [!NOTE]
 > To Check Current date & time using psql:
 >
->```sql
->mytestdb2=# select current_time;
->    current_time    
->--------------------
-> 18:08:17.424516+00 
->(1 row)
+> ```sql
+> mytestdb2=# select current_time;
+>    current_time
+> --------------------
+> 18:08:17.424516+00
+> (1 row)
 >
->mytestdb2=# select current_date;
-> current_date 
->--------------
-> 2024-07-21   
->(1 row)
->```
+> mytestdb2=# select current_date;
+> current_date
+> --------------
+> 2024-07-21
+> (1 row)
+> ```
 
->[!NOTE]
+> [!NOTE]
 > To run sql from file using psql:
 > first save sql to a file :
->```bash
->d2b750b501aa:~$ ls
->d2b750b501aa:~$ echo "SELECT * FROM pg_stat_activity;" > test.sql
->d2b750b501aa:~$ cat test.sql 
->SELECT * FROM pg_stat_activity;
->```
+>
+> ```bash
+> d2b750b501aa:~$ ls
+> d2b750b501aa:~$ echo "SELECT * FROM pg_stat_activity;" > test.sql
+> d2b750b501aa:~$ cat test.sql
+> SELECT * FROM pg_stat_activity;
+> ```
 >
 > then psql -f <filename>
 >
->Example(it's ran from client container so looks like this ):
+> Example(it's ran from client container so looks like this ):
 >
->```bash
->d2b750b501aa:~$ echo "SELECT current_time,current_date;" > test.sql
->d2b750b501aa:~$ psql postgres://postgres:postgres@pg_server:5432/postgres -f test.sql 
->    current_time    | current_date 
->--------------------+--------------
-> 18:14:01.094701+00 | 2024-07-21   
->(1 row)
->```
-> Another option is to connect psql first and then run like below to run sql from file 
+> ```bash
+> d2b750b501aa:~$ echo "SELECT current_time,current_date;" > test.sql
+> d2b750b501aa:~$ psql postgres://postgres:postgres@pg_server:5432/postgres -f test.sql
+>    current_time    | current_date
+> --------------------+--------------
+> 18:14:01.094701+00 | 2024-07-21
+> (1 row)
+> ```
 >
->```sql
->postgres-# \i test.sql 
->    current_time    | current_date 
->--------------------+--------------
-> 18:17:08.691451+00 | 2024-07-21   
->(1 row)
->```
+> Another option is to connect psql first and then run like below to run sql from file
+>
+> ```sql
+> postgres-# \i test.sql
+>    current_time    | current_date
+> --------------------+--------------
+> 18:17:08.691451+00 | 2024-07-21
+> (1 row)
+> ```
+
+> [!TIP]
+> In psql we can enter 2 kind of commands :
+>
+> 1. psql meta commands
+> 1. sql commands
+>
+> All Lines that starts with -> \ (backslash) are presumed to be the meta commands.
+
+> [!NOTE]
+>
+> 1. \? : This provides help on psql meta commands
+> 1. \h : This provides help on specific `SQL` commands
+
+> [!IMPORTANT]
+>
+> To check this below topics
+>
+> 1. **Information Function**
+> 1. Output formatting
+> 1. Execution timing using **`\timing`** commands
+> 1. **Input/Output** and **Editing** commands
+> 1. Automatic startup file : **`.psqlrc`**
+> 1. Substitutable parameter (_variable_)
+> 1. Access to the **OS command line**
+
+---
