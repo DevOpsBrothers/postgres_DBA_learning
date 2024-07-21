@@ -201,6 +201,25 @@
 > 1. `\?` : This provides help on psql meta commands
 > 1. `\h` : This provides help on specific `SQL` commands
 
+> [!NOTE]
+>
+> To Check if Postgres server is up or not:
+>```sh
+>pg_isready -h pg_server -U postgres -d postgres
+>```
+> output:
+> > pg_server:5432 - accepting connections
+>
+>```sh
+>d2b750b501aa:/$ pg_isready -h pg_server -U postgres -d postgres
+>pg_server:5432 - accepting connections
+>d2b750b501aa:/$ pg_isready -h pg_server -U postgres
+>pg_server:5432 - accepting connections
+>d2b750b501aa:/$ pg_isready -h pg_server
+>pg_server:5432 - accepting connections
+>```
+
+
 > [!IMPORTANT]
 >
 > To check this below topics
