@@ -88,3 +88,34 @@
 > --output:
 > PostgreSQL 16.3 on x86_64-pc-linux-musl, compiled by gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, 64-bit
 > ```
+
+## Enabling Access for Network / Remote User
+
+> [!IMPORTANT]
+>
+> There are 2 config files through which we can modify access for network and remote user:
+>
+> 1. **`postgresql.conf`**
+> 1. **`pg_hba.conf`**
+>
+> For my postgres image those 2 files are present in below path :
+>
+> ```bash
+> postgres@172.17.0.2:/postgres ]>ls
+> Database  install
+> postgres@172.17.0.2:/postgres ]>find . -iname "postgresql.conf"
+> ./Database/postgresql.conf
+> postgres@172.17.0.2:/postgres ]>find . -iname "pg_hba.conf"
+> ./Database/pg_hba.conf
+> ```
+
+> [!IMPORTANT]
+> in **postgresql.conf** add below line to configure postgres to listen from all hosts
+> **`listen_addresses='*'`**
+>
+> Restart PostgreSQL server
+
+> [!IMPORTANT]
+> in **pg_hba.conf** add below line to allow access to **all database** to **all user**
+>
+> **host all all 0.0.0.0/0 md5`**
