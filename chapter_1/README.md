@@ -1,6 +1,7 @@
 # Chapter 1: First Steps
 
 ---
+
 ![My Skills](https://go-skill-icons.vercel.app/api/icons?i=postgres,linux,docker,bash,&perine=6)
 
 ---
@@ -17,45 +18,73 @@
 > 1. Using Connection **Service File**
 > 1. Troubleshooting
 
->[!TIP]
+---
+
+## Connecting PGSQL
+
+> [!IMPORTANT]
+> If we don't provide preceding parameters , PostgreSQL looks for values set through **ENVIRONMENT** Variables, as follows:
+>
+> ```bash
+> PGHOST=<hostval>
+> PGPORT=5432 #(default)
+> PGDATABASE=postgres #(default)
+> PGUSER=postgres #(default)
+> ```
+>
+> > [!DANGER]
+> > Not Recommended
+> > `PGPASSWORD=MyPassWord@123`
+
+> [!TIP]
+>
+> ### Connection Details URI Format :
+>
+> ```link
+> postgresql://user:password@HOST:PORT/DATABASE
+> ```
+
+> [!TIP]
+>
 > ### To Check current DB :
 >
->```sql
+> ```sql
 > select current_database();
 > -- output:
 > -- postgres
->```
+> ```
 
->[!TIP]
+> [!TIP]
+>
 > ### To Check current DB User :
 >
->```sql
+> ```sql
 > select current_user;
 > -- output:
 > -- postgres
->```
+> ```
 
->[!IMPORTANT]
+> [!IMPORTANT]
+>
 > ### To Check ServerIP and Port of current session:
 >
->```sql
->select inet_server_addr() ,inet_server_port();
->--output:
->--null [as it is connected through socket]
->```
+> ```sql
+> select inet_server_addr() ,inet_server_port();
+> --output:
+> --null [as it is connected through socket]
+> ```
 >
->
->```sql
->postgres=# \conninfo
->You are connected to database "postgres" as user "postgres" via socket in "/tmp" at port "5432".
->```
+> ```sql
+> postgres=# \conninfo
+> You are connected to database "postgres" as user "postgres" via socket in "/tmp" at port "5432".
+> ```
 
->[!TIP]
+> [!TIP]
+>
 > ### To Check PostgreSQL version on Server:
 >
->```sql
->select version();
->--output:
->PostgreSQL 16.3 on x86_64-pc-linux-musl, compiled by gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, 64-bit
->```
-
+> ```sql
+> select version();
+> --output:
+> PostgreSQL 16.3 on x86_64-pc-linux-musl, compiled by gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, 64-bit
+> ```
