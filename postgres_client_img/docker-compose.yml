@@ -1,0 +1,21 @@
+name: postgres
+
+services:
+  pg_server:
+    image: pritamchk98/pgdb_img:v1.1
+    container_name: server
+    ports:
+      - 5432:5432
+    restart: on-failure
+    networks:
+      - server_client_nw
+  pg_client:
+    build: .
+    container_name: pg_client
+    networks:
+      - server_client_nw
+    depends_on:
+      - pg_server
+
+networks:
+  server_client_nw:
