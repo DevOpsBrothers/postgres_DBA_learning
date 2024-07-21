@@ -198,8 +198,8 @@
 
 > [!NOTE]
 >
-> 1. \\? : This provides help on psql meta commands
-> 1. \h : This provides help on specific `SQL` commands
+> 1. `\?` : This provides help on psql meta commands
+> 1. `\h` : This provides help on specific `SQL` commands
 
 > [!IMPORTANT]
 >
