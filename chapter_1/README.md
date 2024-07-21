@@ -88,7 +88,9 @@
 > --output:
 > PostgreSQL 16.3 on x86_64-pc-linux-musl, compiled by gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, 64-bit
 > ```
+
 ---
+
 ## Enabling Access for Network / Remote User
 
 > [!IMPORTANT]
@@ -122,7 +124,9 @@
 > # TYPE  DATABASE        USER            ADDRESS                 METHOD
 > host    all              all         0.0.0.0/0 md5
 > ```
+
 ---
+
 ## Use the `psql` query and scripting
 
 > [!IMPORTANT]
@@ -204,21 +208,23 @@
 > [!NOTE]
 >
 > To Check if Postgres server is up or not:
->```sh
->pg_isready -h pg_server -U postgres -d postgres
->```
+>
+> ```sh
+> pg_isready -h pg_server -U postgres -d postgres
+> ```
+>
 > output:
+>
 > > pg_server:5432 - accepting connections
 >
->```sh
->d2b750b501aa:/$ pg_isready -h pg_server -U postgres -d postgres
->pg_server:5432 - accepting connections
->d2b750b501aa:/$ pg_isready -h pg_server -U postgres
->pg_server:5432 - accepting connections
->d2b750b501aa:/$ pg_isready -h pg_server
->pg_server:5432 - accepting connections
->```
-
+> ```sh
+> d2b750b501aa:/$ pg_isready -h pg_server -U postgres -d postgres
+> pg_server:5432 - accepting connections
+> d2b750b501aa:/$ pg_isready -h pg_server -U postgres
+> pg_server:5432 - accepting connections
+> d2b750b501aa:/$ pg_isready -h pg_server
+> pg_server:5432 - accepting connections
+> ```
 
 > [!IMPORTANT]
 >
@@ -233,8 +239,78 @@
 > 1. Access to the **OS command line**
 
 ---
+
 ## Changing Password Securely
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Once Connected to psql with user creds, we can change password for that user in interactive way using `\password` command.
 > ![example_2.png not found](./img/example_2.png)
+
+> [!CAUTION]
+>
+> ```
+> ALTER USER postgres PASSWORD 'myplainpassword'
+> ```
+
+> [!WARNING]
+> Don't use plain password like this as it will be transferred to server as it is , and will get saved in psql history as plain text only.
+> So to avoid that at least we can use pgpass method to store password
+
+> [!IMPORTANT]
+> Technique 1 : Using PGPASS file  
+> Create one file called `.pgpass` in **path :** `~` [which is basically /user path ]
+>
+> Content of File [**`.pgpass`**]
+>
+> ```conf
+> host:port:dbname:user:password
+> ```
+>
+> Then set the ENVIRONMENT variable :
+>
+> ```bash
+> export PGPASSFILE=~/.pgpass
+> ```
+>
+> Use below command to connect psql server without requirement for password input everytime
+>
+> ```sh
+> psql -h <host> -U <user> -d <DATABASE_NAME>
+> ```
+>
+> E.g -
+>
+> ```sh
+> psql -h pg_server -U postgres -d postgres
+> ```
+
+> [!NOTE]
+> There are advanced **authentication** methods such as :
+>
+> - GSSAPI
+> - SSPI
+> - **LDAP**
+> - RADIUS
+
+> [!IMPORTANT]
+> Technique 2 : Using PG SERVICE file  
+> Create one file called `.pgservice.conf` in **path :** `~` [which is basically /user path ]
+> OR
+> **`pg_service.conf`** in **path :** **`/etc/`**
+>
+> Content of File [**`.pgservice.conf`** / **`pg_service.conf`** ]
+>
+> ```conf
+> [dbservice1]
+> host=pg_server
+> port=5432
+> dbname=postgres
+> ```
+>
+> Then set the ENVIRONMENT variable :
+>
+> ```bash
+> export PGSERVICEFILE=~/.pgservice.conf
+> ```
+>
+> This above feature applies to `libpq` connections only , not for **`JDBC`**.
