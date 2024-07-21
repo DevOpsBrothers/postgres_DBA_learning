@@ -25,3 +25,12 @@
 > -- output:
 > -- postgres
 >```
+
+>[!TIP]
+> ### To Check current DB User :
+>
+>```sql
+> select current_user;
+> -- output:
+> -- postgres
+>```
