@@ -122,3 +122,66 @@
 > # TYPE  DATABASE        USER            ADDRESS                 METHOD
 > host    all              all         0.0.0.0/0 md5
 > ```
+
+## Use the `psql` query and scripting
+
+>[!IMPORTANT]
+>
+> To Create user and database through psql , first connect to db
+> 
+>```sql
+>CREATE USER pritam WITH PASSWORD 'admin123';
+>CREATE DATABASE mytestdb;
+>GRANT ALL PRIVILEGES ON DATABASE mytestdb TO pritam;
+>```
+>
+>![example_1.png Not Found](./img/example_1.png)
+
+>[!NOTE]
+> To Check Current date & time using psql:
+>
+>```sql
+>mytestdb2=# select current_time;
+>    current_time    
+>--------------------
+> 18:08:17.424516+00 
+>(1 row)
+>
+>mytestdb2=# select current_date;
+> current_date 
+>--------------
+> 2024-07-21   
+>(1 row)
+>```
+
+>[!NOTE]
+> To run sql from file using psql:
+> first save sql to a file :
+>```bash
+>d2b750b501aa:~$ ls
+>d2b750b501aa:~$ echo "SELECT * FROM pg_stat_activity;" > test.sql
+>d2b750b501aa:~$ cat test.sql 
+>SELECT * FROM pg_stat_activity;
+>```
+>
+> then psql -f <filename>
+>
+>Example(it's ran from client container so looks like this ):
+>
+>```bash
+>d2b750b501aa:~$ echo "SELECT current_time,current_date;" > test.sql
+>d2b750b501aa:~$ psql postgres://postgres:postgres@pg_server:5432/postgres -f test.sql 
+>    current_time    | current_date 
+>--------------------+--------------
+> 18:14:01.094701+00 | 2024-07-21   
+>(1 row)
+>```
+> Another option is to connect psql first and then run like below to run sql from file 
+>
+>```sql
+>postgres-# \i test.sql 
+>    current_time    | current_date 
+>--------------------+--------------
+> 18:17:08.691451+00 | 2024-07-21   
+>(1 row)
+>```
