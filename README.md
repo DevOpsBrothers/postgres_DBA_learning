@@ -28,5 +28,6 @@ In this repo: Postgres DBA commands and concepts learning will be kept
 >[!TIP]
 >
 >To Play with POSTGRESQL use the [PostgreSQL Client Image](https://github.com/DevOpsBrothers/postgres_DBA_learning/tree/main/postgres_client_img)
->README is the inside the folder , instructions are given in that -> how to use.
+>
+>README is there inside the folder , instructions are given in that -> how to use.
 > 
