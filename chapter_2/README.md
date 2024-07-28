@@ -13,15 +13,15 @@
 > 1. [Version of server](#version-of-server)
 > 1. [Checking Server Uptime](#checking-server-uptime)
 > 1. [DB Server file structure](#db-server-file-structure)
-> 1. Locating _DB Server_ MSG LOG
-> 1. Locating the DB system identifier
+> 1. [Envvar setting process](#envvar-setting-process)
+> 1. [DB system identifier](#db-system-identifier)
 > 1. Locating Databases in DB Server
 > 1. Listing DBs
-> 1. Listing How many _tables_ are there
-> 1. Checking Disk Space usage by a _table_
-> 1. Which are the biggest _tables_
-> 1. Listing How many rows are there in a _table_
-> 1. Quickly estimating the no of rows in a _table_
+> 1. Listing How many tables are there
+> 1. Checking Disk Space usage by a table
+> 1. Which are the biggest tables
+> 1. Listing How many rows are there in a table
+> 1. Quickly estimating the no of rows in a table
 > 1. Extensions in DB
 > 1. **Check Object Dependency**
 
@@ -99,3 +99,32 @@
 > the folder structure inside Postgres installation path
 >
 >![binPathImg not found](./imgs/binPathImg.png)
+
+## Envvar setting process
+
+> [!TIP]
+>```bash
+> PGROOT=/home/postgres
+> PGREALESE=16.3
+> PGSERVERNAME=PGDB1
+> PGDATA=$PGROOT/$PGREALESE/$PGSERVERNAME
+>```
+
+
+## DB system identifier
+
+> [!TIP]
+>
+>Each Database has a system identifier assigned When the database is initialized. The server identifier remains the same if the server is backed up cloned and so on.
+>
+>Many actions on the server are keyed to the system identifier, and you may be asked to provide this information when you report a fault.
+>
+>```bash
+> pg_controldata $PGDATA | grep -i "system.*.identifier"
+> ```
+>
+> Output:
+>```bash
+>Database system identifier:           7388225005664768010
+>```
+
