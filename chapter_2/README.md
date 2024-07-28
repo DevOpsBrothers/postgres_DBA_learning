@@ -20,7 +20,7 @@
 > 1. [Listing How many tables are there](#listing-how-many-tables-are-there)
 > 1. [Disk Space usage by Current Database](#disk-space-usage-by-current-database)
 > 1. [Checking Disk Space usage by a table](#checking-disk-space-usage-by-a-table)
-> 1. Which are the biggest tables
+> 1. [Which are the biggest tables](#which-are-the-biggest-tables)
 > 1. Listing How many rows are there in a table
 > 1. Quickly estimating the no of rows in a table
 > 1. Extensions in DB
@@ -57,7 +57,7 @@
 > psql --version
 > ```
 
-## Checking **Server Uptime**
+## Checking Server Uptime
 
 > [!IMPORTANT]
 > To check the up time of the server we can use below query
@@ -206,3 +206,11 @@ OR
 >```
 > Output
 >![tableSizeExample.not.found](./imgs/tableSize.png)
+
+## Which are the biggest tables
+
+>[!TIP]
+>
+>```sql
+>select table_name,pg_size_pretty(pg_relation_size(table_schema || '.' || table_name)) as Size FROM information_schema.tables order by size desc
+>```
