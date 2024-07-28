@@ -5,11 +5,12 @@
 ![My Skills](https://go-skill-icons.vercel.app/api/icons?i=postgres,linux,docker,bash,&perine=6)
 
 ---
+
 <!-- > 1. Locating Databases in DB Server -->
 
+# Topics to be covered :
+
 > [!NOTE]
->
-> Topics to be covered :
 >
 > 1. [Version of server](#version-of-server)
 > 1. [Checking Server Uptime](#checking-server-uptime)
@@ -77,9 +78,9 @@
 
 ## DB Server file structure
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > the folder structure inside `$PGDATA` dir
->![db file structure not found](./imgs/dirStructurePSQL.png)
+> ![db file structure not found](./imgs/dirStructurePSQL.png)
 
 | Subdirectory Under $PGDATA | Purpose                                                                           |
 | -------------------------- | --------------------------------------------------------------------------------- |
@@ -96,121 +97,135 @@
 | pg_xlog                    | WAL (write ahead log) or transactions logs                                        |
 | pg_notify                  | listen / notify status file                                                       |
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > the folder structure inside Postgres installation path
 >
->![binPathImg not found](./imgs/binPathImg.png)
+> ![binPathImg not found](./imgs/binPathImg.png)
 
 ## Envvar setting process
 
 > [!TIP]
->```bash
+>
+> ```bash
 > PGROOT=/home/postgres
 > PGREALESE=16.3
 > PGSERVERNAME=PGDB1
 > PGDATA=$PGROOT/$PGREALESE/$PGSERVERNAME
->```
-
+> ```
 
 ## DB system identifier
 
 > [!TIP]
 >
->Each Database has a system identifier assigned When the database is initialized. The server identifier remains the same if the server is backed up cloned and so on.
+> Each Database has a system identifier assigned When the database is initialized. The server identifier remains the same if the server is backed up cloned and so on.
 >
->Many actions on the server are keyed to the system identifier, and you may be asked to provide this information when you report a fault.
+> Many actions on the server are keyed to the system identifier, and you may be asked to provide this information when you report a fault.
 >
->```bash
+> ```bash
 > pg_controldata $PGDATA | grep -i "system.*.identifier"
 > ```
 >
 > Output:
->```bash
->Database system identifier:           7388225005664768010
->```
+>
+> ```bash
+> Database system identifier:           7388225005664768010
+> ```
 
 ## Listing DBs
 
->[!IMPORTANT]
->```sql
->select datname from pg_database;
->```
->```sql
->select * from pg_database;
->```
+> [!IMPORTANT]
 >
->OR
+> ```sql
+> select datname from pg_database;
+> ```
 >
->```bash
->psql -c "\l"
->```
+> ```sql
+> select * from pg_database;
+> ```
+>
+> OR
+>
+> ```bash
+> psql -c "\l"
+> ```
 
 ## Listing How many tables are there
 
-
->[!TIP]
+> [!TIP]
 >
->`postgres=# `
->```sql
->select count(*) from information_schema.tables;
->```
+> `postgres=# `
+>
+> ```sql
+> select count(*) from information_schema.tables;
+> ```
 >
 > Output:
->```bash
-> count     
->-------    
->   209     
->(1 row)    
->```
+>
+> ```bash
+> count
+> -------
+>   209
+> (1 row)
+> ```
 
 ## Disk Space usage by Current Database
 
->[!TIP]
->```sql
->select pg_database_size(current_database())/(1024^2)  "size in MB";
->```
+> [!TIP]
+>
+> ```sql
+> select pg_database_size(current_database())/(1024^2)  "size in MB";
+> ```
 
->[!TIP]
->```sql
->select pg_size_pretty(pg_database_size(current_database()));
->```
+> [!TIP]
+>
+> ```sql
+> select pg_size_pretty(pg_database_size(current_database()));
+> ```
 
->Output:
->```bash
-> pg_size_pretty 
->----------------
-> 7252 kB        
->(1 row)
->```
+> Output:
+>
+> ```bash
+> pg_size_pretty
+> ----------------
+> 7252 kB
+> (1 row)
+> ```
 
 ## Checking Disk Space usage by a table
 
->[!TIP]
+> [!TIP]
 >
 > size of table only
->```sql
->select pg_relation_size('table_name');
->```
+>
+> ```sql
+> select pg_relation_size('table_name');
+> ```
+>
 > size of table with index and other related space
->```sql
->select pg_total_relation_size('table_name');
->```
+>
+> ```sql
+> select pg_total_relation_size('table_name');
+> ```
 
 OR
 
->[!TIP]
+> [!TIP]
 >
 > size of table only
->```sql
->\dt+ table_name
->```
+>
+> ```sql
+> \dt+ table_name
+> ```
+>
 > Output
->![tableSizeExample.not.found](./imgs/tableSize.png)
+> ![tableSizeExample.not.found](./imgs/tableSize.png)
 
 ## Which are the biggest tables
 
->[!TIP]
+> [!TIP]
 >
->```sql
->select table_name,pg_size_pretty(pg_relation_size(table_schema || '.' || table_name)) as Size FROM information_schema.tables order by size desc
->```
+> ```sql
+> select table_name,pg_size_pretty(pg_relation_size(table_schema || '.' || table_name)) as Size FROM information_schema.tables order by size desc
+> ```
+
+[Topics to be covered](#topics-to-be-covered)
