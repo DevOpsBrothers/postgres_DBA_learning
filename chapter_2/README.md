@@ -10,8 +10,8 @@
 >
 > Topics to be covered :
 >
-> 1. [Version of server](#version)
-> 1. [Checking **Server Uptime**](#server-uptime)
+> 1. [Version of server](#version-of-server)
+> 1. [Checking **Server Uptime**](#checking-server-uptime)
 > 1. **DB Server** file structure
 > 1. Locating _DB Server_ **MSG LOG**
 > 1. Locating the DB system identifier
