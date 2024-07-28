@@ -228,4 +228,22 @@ OR
 > select table_name,pg_size_pretty(pg_relation_size(table_schema || '.' || table_name)) as Size FROM information_schema.tables order by size desc
 > ```
 
-[Topics to be covered](#topics-to-be-covered)
+> Output
+>
+> ```bash
+>    table_name    |    size
+> ------------------+------------
+> pg_ts_config     | 8192 bytes
+> pg_database      | 8192 bytes
+> pg_shdescription | 8192 bytes
+> pg_auth_members  | 8192 bytes
+> pg_am            | 8192 bytes
+> pg_namespace     | 8192 bytes
+> pg_authid        | 8192 bytes
+> pg_tablespace    | 8192 bytes
+> pg_language      | 8192 bytes
+> pg_ts_dict       | 8192 bytes
+> (10 rows)
+> ```
+
+[Go Back to Contents](#topics-to-be-covered)
