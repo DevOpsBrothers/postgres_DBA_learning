@@ -18,6 +18,7 @@
 > 1. [DB system identifier](#db-system-identifier)
 > 1. [Listing DBs](#listing-dbs)
 > 1. [Listing How many tables are there](listing-how-many-tables-are-there)
+> 1. [Disk Space usage by Current Database](disk-space-usage-by-current-database)
 > 1. [Checking Disk Space usage by a table](checking-disk-space-usage-by-a-table)
 > 1. Which are the biggest tables
 > 1. Listing How many rows are there in a table
@@ -162,7 +163,7 @@
 >(1 row)    
 >```
 
-## Checking Disk Space usage by Current Database
+## Checking Disk Space usage for Current Database
 
 >[!TIP]
 >```sql
