@@ -228,4 +228,4 @@ OR
 > select table_name,pg_size_pretty(pg_relation_size(table_schema || '.' || table_name)) as Size FROM information_schema.tables order by size desc
 > ```
 
-[Topics to be covered](#topics-to-be-covered-)
+[Topics to be covered](#topics-to-be-covered)
