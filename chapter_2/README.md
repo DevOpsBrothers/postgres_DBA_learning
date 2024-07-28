@@ -5,6 +5,7 @@
 ![My Skills](https://go-skill-icons.vercel.app/api/icons?i=postgres,linux,docker,bash,&perine=6)
 
 ---
+<!-- > 1. Locating Databases in DB Server -->
 
 > [!NOTE]
 >
@@ -15,10 +16,9 @@
 > 1. [DB Server file structure](#db-server-file-structure)
 > 1. [Envvar setting process](#envvar-setting-process)
 > 1. [DB system identifier](#db-system-identifier)
-> 1. Locating Databases in DB Server
-> 1. Listing DBs
-> 1. Listing How many tables are there
-> 1. Checking Disk Space usage by a table
+> 1. [Listing DBs](#listing-dbs)
+> 1. [Listing How many tables are there](listing-how-many-tables-are-there)
+> 1. [Checking Disk Space usage by a table](checking-disk-space-usage-by-a-table)
 > 1. Which are the biggest tables
 > 1. Listing How many rows are there in a table
 > 1. Quickly estimating the no of rows in a table
@@ -128,3 +128,67 @@
 >Database system identifier:           7388225005664768010
 >```
 
+## Listing DBs
+
+>[!IMPORTANT]
+>```sql
+>select datname from pg_database;
+>```
+>```sql
+>select * from pg_database;
+>```
+>
+>OR
+>
+>```bash
+>psql -c "\l"
+>```
+
+## Listing How many tables are there
+
+
+>[!TIP]
+>
+>`postgres=# `
+>```sql
+>select count(*) from information_schema.tables;
+>```
+>
+> Output:
+>```bash
+> count     
+>-------    
+>   209     
+>(1 row)    
+>```
+
+## Checking Disk Space usage by Current Database
+
+>[!TIP]
+>```sql
+>select pg_database_size(current_database())/(1024^2)  "size in MB";
+>```
+
+## Checking Disk Space usage by a table
+
+>[!TIP]
+>
+> size of table only
+>```sql
+>select pg_relation_size('table_name');
+>```
+> size of table with index and other related space
+>```sql
+>select pg_total_relation_size('table_name');
+>```
+
+OR
+
+>[!TIP]
+>
+> size of table only
+>```sql
+>\dt+ table_name
+>```
+> Output
+>![tableSizeExample.not.found](./imgs/tableSize.png)
