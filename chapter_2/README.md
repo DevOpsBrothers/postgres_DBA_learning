@@ -77,6 +77,7 @@
 ## DB Server file structure
 
 >[!IMPORTANT]
+> the folder structure inside `$PGDATA` dir
 >![db file structure not found](./imgs/dirStructurePSQL.png)
 
 | Subdirectory Under $PGDATA | Purpose                                                                           |
@@ -93,3 +94,8 @@
 | pg_tblspc                  | symbolic links to tablespace directories                                          |
 | pg_xlog                    | WAL (write ahead log) or transactions logs                                        |
 | pg_notify                  | listen / notify status file                                                       |
+
+>[!IMPORTANT]
+> the folder structure inside Postgres installation path
+>
+>![binPathImg not found](./imgs/binPathImg.png)
