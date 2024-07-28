@@ -170,6 +170,19 @@
 >select pg_database_size(current_database())/(1024^2)  "size in MB";
 >```
 
+>[!TIP]
+>```sql
+>select pg_size_pretty(pg_database_size(current_database()));
+>```
+
+>Output:
+>```bash
+> pg_size_pretty 
+>----------------
+> 7252 kB        
+>(1 row)
+>```
+
 ## Checking Disk Space usage by a table
 
 >[!TIP]
