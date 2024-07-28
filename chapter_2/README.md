@@ -11,14 +11,14 @@
 > Topics to be covered :
 >
 > 1. [Version of server](#version-of-server)
-> 1. [Checking **Server Uptime**](#checking-server-uptime)
-> 1. **DB Server** file structure
-> 1. Locating _DB Server_ **MSG LOG**
+> 1. [Checking Server Uptime](#checking-server-uptime)
+> 1. [DB Server file structure](#db-server-file-structure)
+> 1. Locating _DB Server_ MSG LOG
 > 1. Locating the DB system identifier
-> 1. Locating **Databases** in **DB Server**
-> 1. Listing **DBs**
+> 1. Locating Databases in DB Server
+> 1. Listing DBs
 > 1. Listing How many _tables_ are there
-> 1. Checking **Disk Space usage** by a _table_
+> 1. Checking Disk Space usage by a _table_
 > 1. Which are the biggest _tables_
 > 1. Listing How many rows are there in a _table_
 > 1. Quickly estimating the no of rows in a _table_
@@ -73,3 +73,23 @@
 > 00:57:14
 > (1 row)
 > ```
+
+## DB Server file structure
+
+>[!IMPORTANT]
+>![db file structure not found](./imgs/dirStructurePSQL.png)
+
+| Subdirectory Under $PGDATA | Purpose                                                                           |
+| -------------------------- | --------------------------------------------------------------------------------- |
+| base                       | this is main table storage, beneath this directory, each db has its own directory |
+| global                     | tables are stored here which are shared across all Databases                      |
+| pg_commit_ts               | transasction commit timstamp data                                                 |
+| pg_clog                    | transaction status file                                                           |
+| pg_multixact               | row level locks                                                                   |
+| pg_snapshot                | to store exported snapshot                                                        |
+| pg_stat                    | permanent statistics data                                                         |
+| pg_stat_tmp                | transient stat data                                                               |
+| pg_subtrans                | \-                                                                                |
+| pg_tblspc                  | symbolic links to tablespace directories                                          |
+| pg_xlog                    | WAL (write ahead log) or transactions logs                                        |
+| pg_notify                  | listen / notify status file                                                       |
