@@ -6,6 +6,7 @@ services:
     container_name: server
     ports:
       - 5432:5432
+      # - 5444:5444 # just to check multi instances of pgsql
     restart: on-failure
     networks:
       - server_client_nw
