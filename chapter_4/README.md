@@ -69,7 +69,7 @@
 
 ## stopping the server safely and quickly
 
->![NOTE]
+>[!NOTE]
 > there are 3 modes :
 > 1. smart
 > 1. fast
@@ -79,7 +79,7 @@
 >pg_ctl -D <real/path/to/MYDB> -m [smart|fast|immediate] <start/stop/restart>
 >```
 
->![TIP]
+>[!TIP]
 >
 >One Best Practice to restart PGSQL server is to  create CHECKPOINT
 >
@@ -105,7 +105,7 @@
 
 ## Restricting users
 
->![IMPORTANT]
+>[!IMPORTANT]
 >
 >TO SET DEFAULT SCHEMA for a Particular user
 >
