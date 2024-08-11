@@ -8,7 +8,7 @@
 
 ## database planning
 
-> [!INFO]
+> [!NOTE]
 >
 > 1.  Database Design - plan the DB
 > 1.  Calculate the initial DB sizing
