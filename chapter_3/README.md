@@ -3,8 +3,7 @@
 # Table Of Contents
 
 > 1.  [database planning](#database-planning)
-> 1.  [changing parameter in DB](#changing-parameter-in-db)
-> 1.  [finding the current settings](#finding-the-current-settings)
+> 1.  [Current Settings and Parameter Change](#current-settings-and-parameter-change)
 
 ## database planning
 
@@ -31,7 +30,7 @@
 > 1.  Checkpoint - Timeout (**Backup and Restore**)
 > 1.  Plan BKP mechanism
 
-## Changing parameter in db
+## Current Settings and Parameter Change
 
 > To Check Postgres Settings :
 >
@@ -74,3 +73,30 @@
 > ```sh
 > pg_ctl restart
 > ```
+
+> [!TIP]
+> We can update parameters using **`QUERY`** as well
+>
+>Example:
+>```sql
+>ALTER SYSTEM SET SHARED_BUFFERS='1GB'
+>```
+>Thi will not directly modify the `postgresql.conf` rather it will create a new file called - **`postgresql.auto.conf`**.
+>
+>---
+>
+>Setting Parameters for Particular users / groups
+>
+>CASES:
+>```sql
+>ALTER DATABASE <DB> SET config_param = <value>
+>```
+>
+>```sql
+>ALTER ROLE <USER> SET config_param = <value>
+>```
+>```sql
+>ALTER ROLE <USER> in DATABASE <DB> SET config_param = <value>
+>```
+>
+>---
