@@ -132,3 +132,7 @@
 >GRANT CONNECT ON DATABASE FRED_DB TO fred;
 >commit;
 >```
+
+## running multiple servers on one system
+
+> **similar to point 1**.
