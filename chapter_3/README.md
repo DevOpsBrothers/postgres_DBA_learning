@@ -29,3 +29,45 @@
 >1. Checkpoint - Timeout (**Backup and Restore**)
 >1. Plan BKP mechanism 
 
+## Changing parameter in db
+
+> To Check Postgres Settings :
+>
+>```sql
+>select * from pg_settings;
+>```
+
+> Expand Display Settings :
+>
+>`psql=#`
+>```sql
+>
+>\x
+>```
+
+> To Check Postgres Settings (Another way):
+>
+>```sql
+>show config_file;
+>show hba_file;
+>show ident_file;
+>```
+
+>![TIP]
+>There are 200+ parameters
+>
+>```sql
+>SELECT name, setting FROM pg_settings WHERE source!='default' AND source!='override' order by 2,1;
+>```
+>
+>Many of the parameters can be changed while the server is still running. After changing the required parameters, we issue a reload operation to the server, forcing Postgres to reread the **`postgresql.conf`**
+>
+>```sh
+>pg_ctl reload
+>```
+>
+>Some Param needs restart
+>
+>```sh
+>pg_ctl restart
+>```
