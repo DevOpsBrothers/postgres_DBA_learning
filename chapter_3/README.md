@@ -53,7 +53,7 @@
 >show ident_file;
 >```
 
->![TIP]
+>[!TIP]
 >There are 200+ parameters
 >
 >```sql
